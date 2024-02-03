@@ -1,0 +1,49 @@
+CREATE TABLE moviestars (
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    name TEXT,
+    age INTEGER,
+    partner_id INTEGER);
+    
+INSERT INTO moviestars (name, age, partner_id) VALUES ("Ryan Gosling", 42, 6);
+INSERT INTO moviestars (name, age) VALUES ("Margot Robbie", 33);
+INSERT INTO moviestars (name, age, partner_id) VALUES ("Ryan Reynolds", 46, 4);
+INSERT INTO moviestars (name, age, partner_id) VALUES ("Blake Lively", 36, 3);
+INSERT INTO moviestars (name, age) VALUES ("Emma Stone", 36);
+INSERT INTO moviestars (name, age, partner_id) VALUES ("Eva Mendes", 49, 1);
+INSERT INTO moviestars (name, age) VALUES ("Lindsay Lohan", 37);
+INSERT INTO moviestars (name, age) VALUES ("Rachel McAdams", 44);
+INSERT INTO moviestars (name, age) VALUES ("Morena Baccarin", 44);
+INSERT INTO moviestars (name, age) VALUES ("Anna Kendrick", 38);
+
+CREATE TABLE movies (
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    name TEXT,
+    release_year INTEGER,
+    character1_id INTEGER,
+    character2_id INTEGER);
+    
+INSERT INTO movies (name, release_year, character1_id, character2_id) 
+VALUES 
+  ("Barbie", 2023, 2, 1),
+  ("La la land", 2016, 5, 1),
+  ("Crazy Stupid Love", 2011, 5, 1),
+  ("Mean Girls", 2004, 7, 8),
+  ("The Notebook", 2004, 1, 8),
+  ("Deadpool", 2016, 3, 9),
+  ("A Simple Favor", 2018, 10, 4);
+
+-- Partners have each other's id and name
+SELECT moviestars.name, partners.name 
+AS partner 
+FROM moviestars
+JOIN moviestars partners
+ON moviestars.partner_id = partners.id;
+    
+
+-- Each movie is associated with two rows from moviestars
+SELECT movies.name, a.name as character_1, b.name AS character_2 
+FROM movies
+JOIN moviestars a
+ON movies.character1_id = a.id
+JOIN moviestars b
+ON movies.character2_id = b.id;
