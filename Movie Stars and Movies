@@ -4,16 +4,18 @@ CREATE TABLE moviestars (
     age INTEGER,
     partner_id INTEGER);
     
-INSERT INTO moviestars (name, age, partner_id) VALUES ("Ryan Gosling", 42, 6);
-INSERT INTO moviestars (name, age) VALUES ("Margot Robbie", 33);
-INSERT INTO moviestars (name, age, partner_id) VALUES ("Ryan Reynolds", 46, 4);
-INSERT INTO moviestars (name, age, partner_id) VALUES ("Blake Lively", 36, 3);
-INSERT INTO moviestars (name, age) VALUES ("Emma Stone", 36);
-INSERT INTO moviestars (name, age, partner_id) VALUES ("Eva Mendes", 49, 1);
-INSERT INTO moviestars (name, age) VALUES ("Lindsay Lohan", 37);
-INSERT INTO moviestars (name, age) VALUES ("Rachel McAdams", 44);
-INSERT INTO moviestars (name, age) VALUES ("Morena Baccarin", 44);
-INSERT INTO moviestars (name, age) VALUES ("Anna Kendrick", 38);
+INSERT INTO moviestars (name, age, partner_id) 
+VALUES 
+    ("Ryan Gosling", 42, 6),
+    ("Margot Robbie", 33, null),
+    ("Ryan Reynolds", 46, 4),
+    ("Blake Lively", 36, 3),
+    ("Emma Stone", 36, null),
+    ("Eva Mendes", 49, 1),
+    ("Lindsay Lohan", 37, null),
+    ("Rachel McAdams", 44, null),
+    ("Morena Baccarin", 44, null),
+    ("Anna Kendrick", 38, null);
 
 CREATE TABLE movies (
     id INTEGER PRIMARY KEY AUTOINCREMENT,
