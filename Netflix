@@ -1,3 +1,5 @@
+-- Language used: PostgreSQL
+
 -- This project utilized data from the following Netflix dataset:
 
 CREATE TABLE netflix_titles_info
