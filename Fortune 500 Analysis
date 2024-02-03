@@ -1,3 +1,5 @@
+-- Languaged used: Standard SQL
+
 -- This analysis uses the following Fortune 500 dataset:
 
 CREATE TABLE fortune_companies (
