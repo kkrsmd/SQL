@@ -1,3 +1,5 @@
+-- Languaged used: Standard SQL
+
 -- For this project, I used SQL to query the Superstore database to get information about items sold at the store and their prices. 
 
 CREATE TABLE superstore (
