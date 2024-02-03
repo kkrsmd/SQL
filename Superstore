@@ -36,7 +36,7 @@ ORDER BY price;
 SELECT AVG(price)
 FROM superstore;
 
-# Calculate the average price of items in the category of "Kitchen Supplies". 
+# Calculates the average price of items in the category of "Kitchen Supplies". 
 SELECT AVG(price)
 FROM superstore
 WHERE category="Kitchen Supplies"
