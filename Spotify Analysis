@@ -1,0 +1,71 @@
+-- For this project, I first downloaded Spotify data from Kaggle. (https://www.kaggle.com/datasets/equinxx/spotify-top-50-songs-in-2021?resource=download)
+-- I created a table to insert Spotify data into.
+
+CREATE TABLE BIT_DB.Spotifydata (
+id integer PRIMARY KEY,
+artist_name varchar NOT NULL,
+track_name varchar NOT NULL,
+track_id varchar NOT NULL,
+popularity integer NOT NULL,
+danceability decimal(4,3) NOT NULL,
+energy decimal(4,3) NOT NULL,
+key integer NOT NULL,
+loudness decimal(5,3) NOT NULL,
+mode integer NOT NULL,
+speechiness decimal(5,4) NOT NULL,
+acousticness decimal(6,5) NOT NULL,
+instrumentalness text NOT NULL,
+liveness decimal(5,4) NOT NULL,
+valence decimal(4,3) NOT NULL,
+tempo decimal(6,3) NOT NULL,
+duration_ms integer NOT NULL,
+time_signature integer NOT NULL 
+);
+
+-- Then I inserted the Spotify Data .csv into the table and performed analytics on the data using SQL. 
+
+-- List tracks that are by Olivia Rodrigo
+
+SELECT track_name
+FROM Spotifydata
+WHERE artist_name = "Olivia Rodrigo";
+
+-- How many songs have the danceability above 0.5?
+
+SELECT COUNT(*)
+FROM Spotifydata
+WHERE danceability > 0.5;
+
+-- What is the minimum, maximum, and average duration of the songs from each artist?
+
+SELECT artist_name, MIN(duration_ms), MAX(duration_ms), AVG(duration_ms)
+FROM Spotifydata
+GROUP BY artist_name;
+
+--- List artists with the most danceability to the least
+
+SELECT artist_name, AVG(danceability)
+FROM Spotifydata
+GROUP BY artist_name
+ORDER BY AVG(danceability) desc;
+
+-- List songs that feature other artists (have "feat." in the title)
+
+SELECT artist_name, track_name
+FROM Spotifydata
+WHERE track_name like '%feat.%';
+
+-- Calculate the average popularity for the artists in the Spotify data table. Then, for every artist with an average popularity of 90 or above, show their name, their average popularity, and label them as a “Top Star”.
+
+SELECT AVG(popularity)
+FROM Spotifydata;
+
+WITH avg_popularity_CTE AS (
+    SELECT s.artist_name, 
+    AVG(s.popularity) AS avg_popularity
+    FROM Spotifydata s
+    GROUP BY s.artist_name
+)
+SELECT artist_name, 'Top Star' AS tag
+FROM avg_popularity_CTE 
+WHERE avg_popularity>=90;
