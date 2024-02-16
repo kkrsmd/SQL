@@ -3,13 +3,13 @@
 -- How many orders were placed in January? 
 
 SELECT COUNT(*) 
-FROM BIT_DB.JanSales
+FROM JanSales
 WHERE length(orderID) = 6
 AND orderID <> 'Order ID';
 
 -- How many of those orders were for an iPhone?
 SELECT COUNT(*) 
-FROM BIT_DB.JanSales
+FROM JanSales
 WHERE length(orderID) = 6
 AND orderID <> 'Order ID'
 AND Product = 'iPhone';
